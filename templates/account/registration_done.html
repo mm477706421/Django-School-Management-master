@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<section id="admin-body">
+  <div id="admin-body--inner">
+    <div class="container-fluid px-0">
+      <div class="row mr-0">
+        <div class="col-2 pr-0 bg-sidebarbg">
+          <div class="sidenav">
+            <div class="sidenav-header text-center text-light mt-4 mb-5">
+              <h3>管理系统</h3>
+            </div>
+            <div class="sidenav sidelink">
+              <a href="{% url 'students:add_student' %}">机构</a>
+            </div>
+            <div class="sidenav sidelink">
+              <a href="{% url 'students:all_student' %}">学生列表</a>
+            </div>
+            <div class="sidenav sidelink">
+              <a href="{% url 'teachers:add_teacher' %}">新建老师</a>
+            </div>
+            <div class="sidenav sidelink">
+              <a href="{% url 'teachers:all_teacher' %}">老师列表</a>
+            </div>
+            <div class="sidenav sidelink">
+              <a href="">部门</a>
+            </div>
+            <div class="sidenav sidelink">
+              <a href="{% url 'students:all_semester' %}">学期</a>
+            </div>
+            <div class="sidenav sidelink">
+              <a href="{% url 'students:add_semester' %}">新建学期</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-10">
+          <div class="dashboard-body py-5">
+            <!-- top cards -->
+            <div class="top-cards">
+              <div class="info-card">
+                <h4>学生</h4>
+                <h2>2000</h2>
+              </div>
+              <div class="info-card">
+                <h4>老师</h4>
+                <h2>20</h2>
+              </div>
+              <div class="info-card">
+                <h4>机构</h4>
+                <h2>10</h2>
+              </div>
+              <div class="info-card">
+                <h4>未结付工资</h4>
+                <h2>400</h2>
+              </div>
+            </div>
+            <hr>
+            <!--/top cards -->
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends 'dashboard.html' %}
+{% load crispy_forms_tags %}
+
+{% block extra_header %}
+{% endblock %}
+
+{% block dashboard-body %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="#">Students</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Index</li>
+    </ol>
+</nav>
+
+<!-- Stats - Links -->
+<div class="row">
+    <!-- Topbar Informations -->
+    <div class="col-sm-12 col-md-3">
+        <div class="card bg-primary p-3">
+            <h5>
+                <a class="text-light" 
+                    href="{% url 'students:online_applicants_list' %}">
+                    Online Applicants
+                    <span class="badge badge-light">
+                        {{ online_applicants.count }}
+                    </span>
+                </a>
+            </h5>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-3">
+        <div class="card bg-info p-3">
+            <h5>
+                <a class="text-light" href="{% url 'students:admitted_student_list' %}">
+                    Admitted <span class="badge badge-light">
+                        {{ admitted_students.count }}
+                    </span>
+                </a>
+            </h5>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-3">
+        <div class="card bg-success p-3">
+            <h5>
+                <a class="text-light" href="{% url 'students:paid_registrants' %}">
+                    PAID REGISTRANTS
+                    {% if paid_registrants.count > 0 %}
+                    <span class="badge badge-light">
+                        {{ paid_registrants.count }}
+                    </span>
+                    {% endif %}
+                </a>
+            </h5>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-3">
+        <div class="card bg-info p-3">
+            <h5>
+                <a class="text-light" href="{% url 'pages:online_admission' %}" target="_blank">
+                    ADMISSION SITE
+                </a>
+            </h5>
+        </div>
+    </div>
+</div>
+<hr>
+<!-- Actions -->
+<div class="row">
+    <div class="col-12 d-flex">
+        <div class="action-btn-box mr-1">
+            <a href="{% url 'students:add_student' %}" class="btn btn-sm btn-success">Add New Student</a>
+        </div>
+        <div class="action-btn-box mr-1">
+            <a href="" class="btn btn-info btn-sm">This Months Admissons</a>
+        </div>
+        <div class="action-btn-box mr-1">
+            <a href="" class="btn btn-sm btn-dark">
+                Extract data from admitted students
+            </a>
+        </div>
+        <div class="action-btn-box mr-1">
+            <a href="" class="btn btn-sm btn-danger">
+                Extract data from registrants
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extrajs %}
+    <script>
+    // Select Image
+    $('input[type="file"]').change(function(e){
+        const fileName = e.target.files[0].name;
+        $('.custom-file-label').html(fileName);
+    });
+    </script>
+{% endblock %}
