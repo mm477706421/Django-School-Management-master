@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from students.models import Student
 from teachers.models import Teacher
 from .forms import UserRegistrationForm
+from pages import urls
 
 
 def user_is_staff(user):
