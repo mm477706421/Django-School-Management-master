@@ -8,16 +8,16 @@
         <div>{{ message|safe }}</div>
     {% endfor %}
 {% else %}
-<h1 class="text-center">Import Subjects From CSV File</h1>
-<div class="alert alert-info">File order: {{ order }}</div>
+<h1 class="text-center">从CSV文件导入课程</h1>
+<div class="alert alert-info">文件序号: {{ order }}</div>
 <form action="." method="post" class="admission-form d-block" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="form-group">
-        <label for="csv">upload your csv file</label>
+        <label for="csv">上传你的CSV文件</label>
         <input type="file" class="form-control-file" id="csv" name="file">
     </div>
     <button type="submit" class="btn btn-outline-info">
-        Import
+        导入
     </button>
 </form>
 {% endif %}

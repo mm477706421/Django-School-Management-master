@@ -24,7 +24,12 @@
 
 <body>
 
-
+    <nav name="header" class="navbar navbar-default" role="navigation" style="background-color: #3c9cfd">
+{#        <img src="{% static "/images/logo.png" %}"  />#}
+        <div class="logo">
+            <a style="font-family: 'Consolas', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;color: white;font-size: large" href="#">用户系统</a>
+        </div>
+    </nav>
   <!-- SITE BODY -->
   {% block content %}
   {% endblock %}
@@ -39,7 +44,7 @@
   {% block extrajs %}
     
   {% endblock extrajs %}
-    
+
 </body>
 
 </html>

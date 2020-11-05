@@ -7,27 +7,27 @@
         <div class="container">
             <div class="row justify-content-center py-5">
                 <div class="col-6">
-                    <h1 class="text-center">Login</h1>
+                    <h1 class="text-center">登录</h1>
                     <form method="POST">
                         {% csrf_token %}
                         <div class="form-group">
-                            <label for="id_username">Username</label>
+                            <label for="id_username">用户名</label>
                             <input type="text" name="username" class="form-control" id="id_username"
-                                placeholder="username">
+                                placeholder="用户名">
                         </div>
                         <div class="form-group">
-                            <label for="id_password">Password</label>
+                            <label for="id_password">密码</label>
                             <input type="password" name="password" class="form-control" id="id_password"
-                                placeholder="password">
+                                placeholder="密码">
                         </div>
                         <input type="hidden" name="next" value="{{ next }}">
-                        <button type="submit" class="btn btn-outline-info float-right">Login</button>
+                        <button type="submit" class="btn btn-outline-info float-right">登录</button>
                     </form>
                     <a class="d-block" href="{% url 'account:register'  %}">
-                        Don't have an account? <b>Register Now.</b>
+                        没有帐户? <b>现在注册</b>
                     </a>
                     <a class="d-block" href="/password-reset/">
-                        Forgot password?
+                        忘记密码?
                     </a>
                 </div>
             </div>
