@@ -6,9 +6,10 @@ from teachers.models import Teacher
 from academics.models import Department
 
 
-class Subject(TimeStampedModel):
+class StudentInfo(TimeStampedModel):
     name = models.CharField(max_length=50)
-    subject_code = models.PositiveIntegerField(unique=True)
+    stuId = models.PositiveIntegerField(unique=True)
+    major = models.CharField(max_length=50)
     instructor = models.ForeignKey(Teacher, on_delete=models.CASCADE,
                                     blank=True, null=True)
     theory_marks = models.PositiveIntegerField(blank=True, null=True)
@@ -18,13 +19,13 @@ class Subject(TimeStampedModel):
         on_delete=models.DO_NOTHING, null=True)
 
     def __str__(self):
-        return "{} ({})".format(self.name, self.subject_code)
+        return "{} {} ({})".format(self.name, self.major, self.stuId)
 
 
 class SubjectCombination(TimeStampedModel):
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
     semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
-    subjects = models.ManyToManyField(Subject)
+    subjects = models.ManyToManyField(StudentInfo)
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.DO_NOTHING, null=True)
@@ -36,7 +37,7 @@ class SubjectCombination(TimeStampedModel):
 class Result(TimeStampedModel):
     marks = models.PositiveIntegerField()
     subject = models.ForeignKey(
-        Subject, on_delete=models.CASCADE,
+        StudentInfo, on_delete=models.CASCADE,
         blank=True, null=True)
     student = models.ForeignKey(
         Student, on_delete=models.CASCADE,

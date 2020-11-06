@@ -10,7 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from academics.views import user_is_staff
 from academics.models import Department, Semester
-from result.models import Result, Subject
+from result.models import Result, StudentInfo
 from .models import Student, AdmissionStudent, CounselingComment
 from .forms import (StudentForm, AdmissionForm, 
     StudentRegistrantUpdateForm, CounselingDataForm)
@@ -257,7 +257,7 @@ def add_result_from_student_detail_view(request, pk):
     student = Student.objects.get(id=pk)
     if request.method == 'POST':
         subject = request.POST.get('subject')
-        subject = Subject.objects.get(subject_code=int(subject))
+        subject = StudentInfo.objects.get(subject_code=int(subject))
         marks = request.POST.get('marks')
         semester = student.semester
         try:

@@ -28,28 +28,28 @@
         <div class="col-12 col-sm-12 col-md-4 col-lg-2 sidenav">
           <div class="logo">
             <!-- <img src="{% static 'images/logo.png' %}" alt="">-->
-            <h4>SMS-LIO ADMIN</h4>
+            <h4>管 理 系 统</h4>
           </div>
           <div class="sn-group">
             <a href="{% url 'account:dashboard' %}" class="sn-link dash-home">
-              <i class="fas fa-tachometer-alt"></i>Dashboard
+              <i class="fas fa-tachometer-alt"></i>总计显示
             </a>
 {#            <a class="sn-link dash-home" href="{% url 'pages:landing' %}" target="_blank">#}
 {#              <i class="fas fa-globe-asia"></i>Visit Site#}
 {#            </a>#}
           </div>
           <div class="sn-group">
-            <h5>import</h5>
+            <h5>导入</h5>
             <nav>
               <a class="sn-link" href="{% url 'result:import_subject_csv' %}">
-                <i class="fas fa-book"></i>subjects from csv
+                <i class="fas fa-book"></i>导入学生信息
               </a>
             </nav>
           </div>
           <div class="sn-group">
             <h5>
               <a class="text-light" href="{% url 'students:students_dashboard_index' %}">
-                Students
+                学生
               </a>
             </h5>
             <nav>

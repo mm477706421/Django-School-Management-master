@@ -5,8 +5,8 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 
 from academics.views import user_is_staff
 from academics.models import Semester
-from students.models import Student
-from result.models import Result, Subject
+from students.models import Student,StudentBase
+from result.models import Result, StudentInfo
 
 
 @user_passes_test(user_is_staff)
@@ -25,7 +25,7 @@ def upload_subjects_csv(request):
     if request.user.has_perm('create_stuff'):
         template = 'result/add_subject_csv.html'
         prompt = {
-            'order': 'Subject name, Subject Code'
+            'order': '学生姓名, 学生学号，学生专业'
         }
         if request.method == 'GET':
             return render(request, template, prompt)
@@ -40,9 +40,10 @@ def upload_subjects_csv(request):
             # TODO: upload data for foreignkey also, and
             # create object for foreignkey if no data found.
             for column in csv.reader(io_string, delimiter=',', quotechar='|'):
-                _, created = Subject.objects.update_or_create(
+                _, created = Student.objects.update_or_create(
                     name=column[0],
-                    subject_code=column[1]
+                    registration_number=column[1],
+                    department=column[2],
                 )
         except:
             pass
